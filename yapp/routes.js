@@ -23,13 +23,19 @@ module.exports = router => {
 
  router.post('/registerUser',
  async (req,res)=>{
-     let error, result;    
+
+    try{
+    
      var finaljson = {}
      var userId = req.body['userId']
      var org = req.body['org']
     console.log(userId,org)
-    result =  await RegisterUser.registerUser(userId,org)
+    let   result =  await RegisterUser.registerUser(userId,org)
     res.json({"result": result});
+    }
+    catch(rejectedstring){
+        res.send(rejectedstring)
+    }
      
  });
 
@@ -44,6 +50,8 @@ module.exports = router => {
     
      
  }); 
+
+ 
 
  router.post('/trasferOwnership', 
  async (req,res)=>{

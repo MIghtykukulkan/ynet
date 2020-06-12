@@ -11,8 +11,7 @@ const path = require('path');
 const to = require('await-to-js').default;
 
 async function registerUser(userId, org) {
-    try {
-        // load the network configuration
+    return new Promise(async (resolve, reject)=>{
         
         let error, result;
         console.log("calling chaincode to register the user " + userId.toString())
@@ -93,14 +92,11 @@ async function registerUser(userId, org) {
         console.log("adding user to the wallet")
         //[error, result] = await to(wallet.put(username, x509Identity));
         await wallet.put(username, x509Identity)
-        return(username + ' Registered successfully');
+        return resolve(username + ' Registered successfully');
       
         
     
-    } catch (error) {
-        console.error(`Failed to enroll  user : ${error}`);
-        throw("error")
-    }
+    })
      
 }
 
