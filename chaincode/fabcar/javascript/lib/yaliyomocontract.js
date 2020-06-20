@@ -146,7 +146,7 @@ class YaliyomoContract extends Contract {
 
     async rejectClaim(ctx, issuerId, productId, txDate){
      
-        return await this.updateState(ctx.stub, productId, "claimedBy", null, txDate)
+        return await this.updateState(ctx.stub, productId, "claimedBy", null, txDate);
 
     }
 
