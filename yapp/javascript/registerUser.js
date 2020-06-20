@@ -55,7 +55,7 @@ async function registerUser(userId, org) {
         const userIdentity = await wallet.get(username);
         if (userIdentity) {
             console.log("duplicate exists")
-            return reject('An identity for the user '+username+' already exists in the wallet');
+            return resolve('An identity for the user '+username+' already exists in the wallet');
            
         }
 
@@ -94,8 +94,7 @@ async function registerUser(userId, org) {
         await wallet.put(username, x509Identity)
         return resolve(username + ' Registered successfully');
       
-        
-    
+           
     })
      
 }

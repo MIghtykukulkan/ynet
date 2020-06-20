@@ -14,11 +14,15 @@ app.use(bodyParser.json());
 
 //app.use(passport.session());
 //connecting mongo
+try{
 
 require('./routes')(app);
 
 module.exports = app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
-
-
+}
+catch(error){
+    console.log(error)
+    console.log("unable to run the applciation, possibly the blockchain network is down..!", error)
+}
 
